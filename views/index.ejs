@@ -36,15 +36,17 @@
           </tr>
         </thead>
         <tbody>
+          <% shrinkedLinks.forEach(shrinkedLink => { %>
           <tr>
             <td>
-              <a href="https://raymondnwambuonwo.netlify.com/"
-                >https://raymondnwambuonwo.netlify.com/</a
-              >
+              <a href="<%= shrinkedLink.full %>"><%= shrinkedLink.full %></a>
             </td>
-            <td><a href="12345">12345</a></td>
-            <td>10</td>
+            <td>
+              <a href="<%= shrinkedLink.short %>"><%= shrinkedLink.short %></a>
+            </td>
+            <td><%= shrinkedLink.clicks %></td>
           </tr>
+          <% }) %>
         </tbody>
       </table>
     </div>

@@ -13,12 +13,14 @@ app.use(express.urlencoded({ extended: false }));
 
 app.get("/", async (req, res) => {
   const shrinkedLinks = await linkShrink.find();
-  res.render("index", { shrinkedLinks: shortUrls });
+  res.render("index", { shrinkedLinks: shrinkedLinks });
 });
 
 app.post("/shortLinks", async (req, res) => {
   await linkShrink.create({ full: req.body.originalURL });
   res.redirect("/");
 });
+
+app.get("/:shrinkedLink");
 
 app.listen(process.env.PORT || 4000);
