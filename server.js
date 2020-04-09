@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const ShortUrl = require("./models/shortUrl");
+const ShortUrl = require("./models/linkshrink");
 const app = express();
 
 mongoose.connect("mongodb://localhost/urlShortener", {
@@ -32,4 +32,4 @@ app.get("/:shortUrl", async (req, res) => {
   res.redirect(shortUrl.longLink);
 });
 
-app.listen(process.env.PORT || 5000);
+app.listen(process.env.PORT || 4000);
