@@ -12,32 +12,41 @@
     <title>Link Shrink</title>
   </head>
   <body>
-    <h1>Link Shrink</h1>
-    <h2>Please Enter URL Below</h2>
-    <form action="" method="POST">
-      <label for="originalURL">Link Here</label>
-      <input type="url" name="originalURL" id="originalURL" />
-      <button type="submit">Short</button>
-    </form>
-    <table>
-      <thead>
-        <tr>
-          <th>Original Link</th>
-          <th>Shrinked Link</th>
-          <th>Times accessed</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <a href="https://raymondnwambuonwo.netlify.com/"
-              >https://raymondnwambuonwo.netlify.com/</a
-            >
-          </td>
-          <td><a href="12345">12345</a></td>
-          <td>10</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="container">
+      <h1>Link Shrink</h1>
+      <h2>Please Enter URL Below</h2>
+      <form action="" method="POST" class="my-4 form-inline">
+        <label for="originalURL" class="sr-only">Link Here</label>
+        <input
+          required
+          placeholder="Link"
+          type="url"
+          name="originalURL"
+          id="originalURL"
+          class="form-control col mr-2"
+        />
+        <button type="submit">Short</button>
+      </form>
+      <table>
+        <thead>
+          <tr>
+            <th>Original Link</th>
+            <th>Shrinked Link</th>
+            <th>Times accessed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://raymondnwambuonwo.netlify.com/"
+                >https://raymondnwambuonwo.netlify.com/</a
+              >
+            </td>
+            <td><a href="12345">12345</a></td>
+            <td>10</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </body>
 </html>
