@@ -9,13 +9,15 @@ mongoose.connect("mongodb://localhost/linkShrink", {
 });
 
 app.set("view engine", "ejs");
+app.use(express.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.post("/shortLinks", (req, res) => {
-  linkShrink.create({ full: req.body.originalURL });
+app.post("/shortLinks", async (req, res) => {
+  await linkShrink.create({ full: req.body.originalURL });
+  res.redirect("/");
 });
 
 app.listen(process.env.PORT || 4000);
