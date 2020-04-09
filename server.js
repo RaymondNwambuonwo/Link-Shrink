@@ -11,8 +11,9 @@ mongoose.connect("mongodb://localhost/linkShrink", {
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
 
-app.get("/", (req, res) => {
-  res.render("index");
+app.get("/", async (req, res) => {
+  const shrinkedLinks = await linkShrink.find();
+  res.render("index", { shrinkedLinks: shortUrls });
 });
 
 app.post("/shortLinks", async (req, res) => {
