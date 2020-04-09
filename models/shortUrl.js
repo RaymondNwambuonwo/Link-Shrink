@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 const shortId = require("shortid");
 
-const linkShrinkSchema = new mongoose.Schema({
-  originalLink: {
+const shrinkLinkSchema = new mongoose.Schema({
+  longLink: {
     type: String,
     required: true,
   },
@@ -17,3 +17,5 @@ const linkShrinkSchema = new mongoose.Schema({
     default: 0,
   },
 });
+
+module.exports = mongoose.model("ShortUrl", shrinkLinkSchema);

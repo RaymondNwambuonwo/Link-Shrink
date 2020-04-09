@@ -1,9 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const linkShrink = require("./models/linkShrink");
+const ShortUrl = require("./models/shortUrl");
 const app = express();
 
-mongoose.connect("mongodb://localhost/linkShrink", {
+mongoose.connect("mongodb://localhost/urlShortener", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -12,15 +12,24 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
 
 app.get("/", async (req, res) => {
-  const shrinkedLinks = await linkShrink.find();
-  res.render("index", { shrinkedLinks: shrinkedLinks });
+  const shortUrls = await ShortUrl.find();
+  res.render("index", { shortUrls: shortUrls });
 });
 
-app.post("/shortLinks", async (req, res) => {
-  await linkShrink.create({ full: req.body.originalURL });
+app.post("/shortUrls", async (req, res) => {
+  await ShortUrl.create({ longLink: req.body.fullUrl });
+
   res.redirect("/");
 });
 
-app.get("/:shrinkedLink");
+app.get("/:shortUrl", async (req, res) => {
+  const shortUrl = await ShortUrl.findOne({ shortLink: req.params.shortUrl });
+  if (shortUrl == null) return res.sendStatus(404);
 
-app.listen(process.env.PORT || 4000);
+  shortUrl.timesAccessed++;
+  shortUrl.save();
+
+  res.redirect(shortUrl.longLink);
+});
+
+app.listen(process.env.PORT || 5000);
