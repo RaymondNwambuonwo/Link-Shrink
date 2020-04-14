@@ -20,5 +20,10 @@ Ability to add URL link and receive a shortened link in return.
 # Future Development
 In the near future I am looking to add a simple but aestetically pleasing front end for this application.
 
+# Use
+* Fork and clone repository
+* Run npm install
+* Run npm start
+
 # Issues
 If there are any issues or suggestions for ways that I can improve my project please submit them [here](https://github.com/RaymondNwambuonwo/Link-Shrink/issues)
